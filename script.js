@@ -124,48 +124,6 @@ function toggleMusic() {
 }
 
 // ─────────────────────────────────────────────────────────────────────
-// ADD TO CALENDAR FUNCTIONALITY
-// ─────────────────────────────────────────────────────────────────────
-
-function addToCalendar() {
-    const eventDetails = {
-        title: 'Tasyakuran Khitanan Rayyan Syazwan Nurdiansyah',
-        description: 'Tasyakuran Khitanan putra dari Bpk. Budi Nurdiansyah & Ibu Fya Yunita',
-        location: 'Perumahan Setia Residen Tarumajaya Bekasi Utara',
-        start: '20260104T030000Z', // 10:00 WIB in UTC
-        end: '20260104T100000Z',   // 17:00 WIB in UTC
-    };
-
-    // Create .ics file content
-    const icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Invitation//Rayyan Khitanan//EN
-BEGIN:VEVENT
-DTSTART:${eventDetails.start}
-DTEND:${eventDetails.end}
-SUMMARY:${eventDetails.title}
-DESCRIPTION:${eventDetails.description}
-LOCATION:${eventDetails.location}
-STATUS:CONFIRMED
-BEGIN:VALARM
-TRIGGER:-PT24H
-ACTION:DISPLAY
-DESCRIPTION:Reminder: ${eventDetails.title}
-END:VALARM
-END:VEVENT
-END:VCALENDAR`;
-
-    // Download .ics file
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'Khitanan_Rayyan_Syazwan.ics';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
-
-// ─────────────────────────────────────────────────────────────────────
 // SMOOTH SCROLL ENHANCEMENTS
 // ─────────────────────────────────────────────────────────────────────
 
